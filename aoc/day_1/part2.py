@@ -1,4 +1,4 @@
-with open("day_1/input.txt") as fp:
+with open("aoc/day_1/input.txt") as fp:
     input_ = list(map(lambda val: int(val), fp.read().splitlines()))
 
 increases = 0
