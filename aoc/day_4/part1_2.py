@@ -1,6 +1,5 @@
 
-from typing import Dict, List
-from functools import reduce
+from typing import List
 
 with open("aoc/day_4/input.txt") as fp:
     input_ = fp.read().splitlines()
