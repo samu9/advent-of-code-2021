@@ -75,3 +75,5 @@ input_.forEach((v) => {
 })
 
 console.log(Object.values(map).filter((x) => x > 1).length)
+
+export {}
