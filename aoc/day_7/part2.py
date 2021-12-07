@@ -1,5 +1,4 @@
 from functools import reduce
-import statistics
 
 with open("aoc/day_7/input.txt") as fp:
     input_ = fp.read().splitlines()
