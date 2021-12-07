@@ -5,19 +5,23 @@ const input_: string[] = fs
     .readFileSync(path.join(path.dirname(__filename), "input.txt"), "utf-8")
     .split(",")
 
-const SON_CYCLE = 7
+const CYCLE_DAYS = 6
+const DAYS = 80
 
-const lanternfishLife = (start: number, days: number) => {
-    let internal_timer = start
-    let sons = 
+let lanternfishes: number[] = input_.map((i) => parseInt(i))
+
+for (const i of Array(DAYS).keys()) {
+    let sons = 0
+    for (let j in lanternfishes) {
+        lanternfishes[j]--
+        if (lanternfishes[j] == 0) {
+            sons++
+            lanternfishes[j] = CYCLE_DAYS
+        }
+    }
+    lanternfishes.push(...Array(sons).fill(CYCLE_DAYS + 2))
 }
 
-let count = input_.length
-
-console.log(input_)
-
-input_.forEach((i) => {
-
-})
+console.log(lanternfishes.length)
 
 export {}
