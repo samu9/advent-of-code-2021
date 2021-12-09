@@ -1,9 +1,7 @@
-from typing import List
+from utils import read_input
+from aoc.day_9.functions import get_adjacents
 
-from functions import get_adjacents
-
-with open("aoc/day_9/input.txt") as fp:
-    input_ = fp.read().splitlines()
+input_ = read_input(__file__)
 
 matrix = [list(map(int, x)) for x in input_]
 height = len(matrix)
