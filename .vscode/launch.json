@@ -17,7 +17,13 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
+            "program": "run.py",
+            "args": [
+                "--day",
+                "10",
+                "--part",
+                "1"
+            ],
             "console": "integratedTerminal"
         }
     ]
