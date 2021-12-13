@@ -29,16 +29,15 @@ def navigate(index, line):
             return False
 
     if line[next] != closer[char]:
+        print(line[next])
         if line[next] not in closer.values():
             points_sum += points[line[next]]
         return False
     return next + 1
 
+
 points_sum = 0
 for i, line in enumerate(input_):
     for index, c in enumerate(line):
-        try:
-            navigate(index, line)
-        except:
-            pass
+        navigate(index, line)
 print(points_sum)
