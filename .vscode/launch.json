@@ -20,7 +20,7 @@
             "program": "run.py",
             "args": [
                 "--day",
-                "13",
+                "14",
                 "--part",
                 "1"
             ],
