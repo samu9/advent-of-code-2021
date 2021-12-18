@@ -2,6 +2,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch file",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "main.go"
+        },
+        {
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
@@ -20,7 +27,7 @@
             "program": "run.py",
             "args": [
                 "--day",
-                "14",
+                "15",
                 "--part",
                 "1"
             ],
