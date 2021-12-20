@@ -2,6 +2,7 @@ package day14
 
 import (
 	"aoc/utils"
+	"sort"
 	"strings"
 )
 
@@ -165,4 +166,11 @@ func Main() {
 		}
 		applyUpdates(bigrams, updates)
 	}
+
+	occ := make([]int, 0, len(bigrams))
+
+	for _, v := range bigrams {
+		occ = append(occ, v)
+	}
+	sort.Ints(occ)
 }
