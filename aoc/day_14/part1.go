@@ -2,6 +2,7 @@ package day14
 
 import (
 	"aoc/utils"
+	"fmt"
 	"sort"
 	"strings"
 )
@@ -140,11 +141,7 @@ func mergeBigrams(bigrams []string) string {
 
 func applyUpdates(bigrams map[string]int, updates map[string]int) {
 	for k, v := range updates {
-		if _, ok := bigrams[k]; ok {
-			bigrams[k] += v
-		} else {
-			bigrams[k] = v
-		}
+		bigrams[k] += v
 	}
 }
 
@@ -160,17 +157,26 @@ func Main() {
 			if _, ok := bigrams[k]; !ok {
 				continue
 			}
-			updates[k] = -bigrams[k]
-			updates[string(k[0])+v] = bigrams[k]
-			updates[v+string(k[1])] = bigrams[k]
+			updates[k] -= bigrams[k]
+			updates[string(k[0])+v] += bigrams[k]
+			updates[v+string(k[1])] += bigrams[k]
 		}
 		applyUpdates(bigrams, updates)
 	}
 
 	occ := make([]int, 0, len(bigrams))
 
-	for _, v := range bigrams {
+	lettersOcc := make(map[string]int)
+
+	for k, v := range bigrams {
+		lettersOcc[string(k[0])] += v
+
+	}
+
+	for _, v := range lettersOcc {
 		occ = append(occ, v)
+
 	}
 	sort.Ints(occ)
+	fmt.Println(occ[len(occ)-1] - occ[0] - 1)
 }
