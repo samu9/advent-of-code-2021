@@ -42,28 +42,26 @@ func removeByIndex(s [][2]int, i int) [][2]int {
 	return s[:len(s)-1]
 }
 
-func removeByValue(s [][2]int, i [2]int) ([][2]int, bool) {
-	found := false
+func removeByValue(s [][2]int, i [2]int) [][2]int {
 	for x := range s {
 		if s[x] == i {
 			s = removeByIndex(s, x)
-			found = true
 			break
 		}
 	}
-	return s, found
+	return s
 }
 
 func getLowestWeight() [2]int {
-	lowestVal := -1
+	lowestVal := math.Inf(0)
 	lowestKey := [2]int{-1, -1}
 	if len(T) == 1 {
 		return T[0]
 	}
 	for _, k := range T {
-		if weight[k] < lowestVal || (lowestVal == -1 && weight[k] != -1) {
+		if tmp, ok := weight[k]; ok && float64(tmp) < lowestVal {
 			lowestKey = k
-			lowestVal = weight[k]
+			lowestVal = float64(weight[k])
 		}
 	}
 	return lowestKey

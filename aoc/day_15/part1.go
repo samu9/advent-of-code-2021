@@ -18,7 +18,7 @@ func iteration(n [2]int) {
 	adj := getAdjacents(n)
 
 	for _, a := range adj {
-		if levels[a]+weight[n] < weight[a] {
+		if tmp, ok := weight[a]; levels[a]+weight[n] < tmp || !ok {
 			weight[a] = levels[a] + weight[n]
 			prev[a] = n
 		}
@@ -41,29 +41,26 @@ func Main() {
 	weight = make(map[[2]int]int)
 	prev = make(map[[2]int][2]int)
 
-	weight[[2]int{0, 0}] = -1
-	prev[[2]int{0, 0}] = [2]int{-1, -1}
-	for _, n := range T {
-		weight[n] = -1
-		prev[n] = [2]int{-1, -1}
-	}
+	weight[[2]int{0, 0}] = 0
+	// prev[[2]int{0, 0}] = [2]int{-1, -1}
+	// for _, n := range T {
+	// 	weight[n] = -1
+	// 	prev[n] = [2]int{-1, -1}
+	// }
 
 	adj := getAdjacents([2]int{0, 0})
 	for _, a := range adj {
-		weight[a] = levels[a]
+		weight[a] = levels[a] + weight[[2]int{0, 0}]
 		fmt.Println(a, weight[a])
 		prev[a] = [2]int{0, 0}
 	}
-	fmt.Println(S, T)
 
-	var found bool
 	for len(T) > 0 {
 		u := getLowestWeight()
 
 		iteration(u)
-		T, found = removeByValue(T, u)
+		T = removeByValue(T, u)
 		S = append(S, u)
-		fmt.Println(len(T), found)
 	}
-	fmt.Println(prev[[2]int{99, 99}])
+	fmt.Println(weight[[2]int{99, 99}])
 }
