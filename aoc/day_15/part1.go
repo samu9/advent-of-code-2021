@@ -25,7 +25,7 @@ func iteration(n [2]int) {
 	}
 }
 
-func Main() {
+func Part1() {
 	// initialize
 	buildLevels()
 	S := [][2]int{{0, 0}}
@@ -42,11 +42,6 @@ func Main() {
 	prev = make(map[[2]int][2]int)
 
 	weight[[2]int{0, 0}] = 0
-	// prev[[2]int{0, 0}] = [2]int{-1, -1}
-	// for _, n := range T {
-	// 	weight[n] = -1
-	// 	prev[n] = [2]int{-1, -1}
-	// }
 
 	adj := getAdjacents([2]int{0, 0})
 	for _, a := range adj {
